@@ -1,0 +1,11 @@
+elkarbackup:
+  image: elkarbackup/elkarbackup
+  links:
+    - db:mysql
+  ports:
+    - ${public_port}:80
+
+db:
+  image: mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: example
