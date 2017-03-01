@@ -1,6 +1,6 @@
 .catalog:
   name: "ElkarBackup"
-  version: "v0.2"
+  version: "v0.1"
   description: "Open source backup solution for your network"
   uuid: ElkarBackup-0
   minimum_rancher_version: v0.51.0

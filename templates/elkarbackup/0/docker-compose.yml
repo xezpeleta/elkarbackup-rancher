@@ -2,6 +2,8 @@ elkarbackup:
   image: elkarbackup/elkarbackup
   links:
     - db:mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: changeme
   ports:
     - ${public_port}:80
 
