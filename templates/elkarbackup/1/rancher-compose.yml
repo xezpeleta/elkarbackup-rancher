@@ -12,3 +12,13 @@ catalog:
       required: true
       default: "80"
       type: "int" 
+    - variable: mysql_root_password
+      description: "MySQL root password"
+      label: "MySQL password"
+      default: "changeme"
+      type: "password"
+    - variable: disable_cron
+      description: "Disable CRON service"
+      label: "Disable CRON"
+      type: "boolean"
+      default: "true"

@@ -1,5 +1,5 @@
 elkarbackup:
-  image: elkarbackup/elkarbackup
+  image: elkarbackup/elkarbackup:1.2.6
   links:
     - db:mysql
   environment:

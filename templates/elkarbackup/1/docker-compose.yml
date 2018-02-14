@@ -1,0 +1,14 @@
+elkarbackup:
+  image: elkarbackup/elkarbackup:1.2.7
+  links:
+    - db:mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: ${mysql_root_password}
+    DISABLE_CRON: ${disable_cron}
+  ports:
+    - ${public_port}:80
+
+db:
+  image: mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: ${mysql_root_password}
