@@ -1,15 +1,29 @@
-elkarbackup:
-  image: elkarbackup/elkarbackup:1.2.7
-  links:
-    - db:mysql
-  environment:
-    EB_DB_HOST: db
-    MYSQL_ROOT_PASSWORD: ${mysql_root_password}
-    DISABLE_CRON: ${disable_cron}
-  ports:
-    - ${public_port}:80
+version: '2'
 
-db:
-  image: mysql
-  environment:
-    MYSQL_ROOT_PASSWORD: ${mysql_root_password}
+services:
+  db:
+    image: mysql
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${mysql_root_password}
+  
+  elkarbackup:
+    image: elkarbackup/elkarbackup:1.2.7
+    links:
+      - db
+    depends_on:
+      - db
+    volumes:
+      - eb_data:/var/spool/elkarbackup
+    environment:
+      MYSQL_ROOT_PASSWORD: ${mysql_root_password}
+      DISABLE_CRON: ${disable_cron}
+    ports:
+      - ${public_port}:80
+
+volumes:
+  db_data:
+    driver: ${volume_driver}
+  eb_data:
+    driver: ${volume_driver}

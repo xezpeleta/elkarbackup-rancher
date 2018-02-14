@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: "ElkarBackup"
-  version: "v1.2.7-rancher1"
+  version: "v1.2.7-rancher2"
   description: "Open source backup solution for your network"
   minimum_rancher_version: v0.51.0
   upgrade_from: "v1.2.6-rancher1"
@@ -22,3 +22,14 @@ catalog:
       label: "Disable CRON"
       type: "boolean"
       default: "false"
+    - variable: volume_driver
+      description: "Volume driver to use with this service"
+      label: "Volume driver"
+      required: true
+      default: "local"
+      type: enum
+      options:
+        - local
+        - rancher-nfs
+        - rancher-efs
+        - rancher-ebs
