@@ -3,6 +3,7 @@ elkarbackup:
   links:
     - db:mysql
   environment:
+    EB_DB_HOST: db
     MYSQL_ROOT_PASSWORD: ${mysql_root_password}
     DISABLE_CRON: ${disable_cron}
   ports:
