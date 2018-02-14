@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: "ElkarBackup"
-  version: "v1.2.6-rancher1"
+  version: "v1.2.7-rancher1"
   description: "Open source backup solution for your network"
   minimum_rancher_version: v0.51.0
   upgrade_from: "0.1"
@@ -21,4 +21,4 @@ catalog:
       description: "Disable CRON service"
       label: "Disable CRON"
       type: "boolean"
-      default: "true"
+      default: "false"
