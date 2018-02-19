@@ -1,25 +1,30 @@
 version: '2'
 catalog:
   name: "ElkarBackup"
-  version: "v1.2.7-rancher3"
+  version: "v1.2.7-rancher4"
   description: "Open source backup solution for your network"
   minimum_rancher_version: v0.51.0
   upgrade_from: "v1.2.6-rancher1"
   questions:
-    - variable: public_port
-      description: "public port to access ElkarBackup web UI"
-      label: "Public Port"
+    - variable: http_enabled
+      description: "Enable HTTP public port"
+      label: "Enable public port. Disable it if you use a LB"
+      type: "boolean"
+      default: "true"
+    - variable: http_port
+      description: "Public port to access ElkarBackup web UI"
+      label: "HTTP public port"
       required: true
       default: "80"
       type: "int" 
     - variable: mysql_root_password
-      description: "MySQL root password"
+      description: "MySQL root password. You should generate a new one"
       label: "MySQL password"
       default: "changeme"
       type: "password"
-    - variable: disable_cron
-      description: "Disable CRON service"
-      label: "Disable CRON"
+    - variable: cron_disabled
+      description: "Disable built-in CRON daemon (if you want to use Rancher Container Cron)"
+      label: "CRON disabled"
       type: "boolean"
       default: "false"
     - variable: volume_driver

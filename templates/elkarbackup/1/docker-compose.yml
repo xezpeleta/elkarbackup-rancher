@@ -16,14 +16,19 @@ services:
       - db
     volumes:
       - eb_data:/var/spool/elkarbackup
+      - eb_sshkey:/var/lib/elkarbackup/.ssh
     environment:
       MYSQL_ROOT_PASSWORD: ${mysql_root_password}
-      DISABLE_CRON: ${disable_cron}
+      DISABLE_CRON: ${cron_disabled}
+  {{- if ne .Values.http_enabled "false"}}
     ports:
-      - ${public_port}:80
+      - ${http_port}}:80/tcp
+  {{- end}}
 
 volumes:
   db_data:
     driver: ${volume_driver}
   eb_data:
+    driver: ${volume_driver}
+  eb_sshkey:
     driver: ${volume_driver}
