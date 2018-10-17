@@ -58,7 +58,7 @@ services:
       reinitializing_timeout: 60000
   db:
     scale: 1
-    retain_ip: 1
+    retain_ip: true
     health_check:
       healthy_threshold: 2
       response_timeout: 2000
