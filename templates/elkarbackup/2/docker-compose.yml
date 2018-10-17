@@ -11,10 +11,13 @@ services:
     - backups:/app/backups
     - uploads:/app/uploads
     - sshkeys:/app/.ssh
-    {{- if ne .Values.http_enabled "false"}}
+    {{- if eq .Values.http_enabled "true" }}
     ports:
-      - ${http_port}}:80/tcp
-    {{- end}}
+      - ${http_port}:80/tcp
+    {{- else}}
+    expose:
+      - 80/tcp
+    {{- end }}
     
   db:
     image: mysql:5.7.22
